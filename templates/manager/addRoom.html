@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<h1>Add Rooms</h1>
+
+
+{% if slot_list %}
+<ul>
+    {% for slot in slot_list %}
+      <li><a href = 'addroom/{{ slot.id }}' </a> {{ slot }}</li> 
+    {% endfor %}
+<ul>
+{% else %}
+    <h4> No Slots available </h4>
+{% endif %}
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<h1>Add Slot</h1>
+
+
+<form method = "POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type=submit> Submit </button>
+</form>
+
+{% if messages %}
+    {% for message in messages %}
+         {% if message.tags %}  
+            <script> alert("{{ message }}") </script> 
+         {% endif %}
+    {% endfor %}
+
+{% endif %}
+
+
+
+
+{% endblock %}
+
