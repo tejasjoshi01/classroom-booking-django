@@ -13,15 +13,14 @@ def managerDashboard(request):
 
 
 def addSlot(request):
-    form_ds = DateSlotForm()
-    if request.method == 'POST':
-        if form_ds.is_valid():
-            form_ds.save()
-        return managerDashboard(request)
+    form_ds = DateSlotForm(request.POST)
+    if form_ds.is_valid():
+        form_ds.save()
+        form_ds = DateSlotForm()
 
-    else:
-        context = { 'form' : form_ds }
-        return render(request , 'manager/addSlot.html' , context)
+    
+    context = { 'form' : form_ds }
+    return render(request , 'manager/addSlot.html' , context)
 
 
 
