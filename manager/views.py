@@ -11,21 +11,21 @@ from .forms import AddRoomForm , DateSlotForm
 def managerDashboard(request):
     return render(request , 'manager/managerDashboard.html')
 
-
 def addSlot(request):
-    form_ds = DateSlotForm(request.POST)
-    if form_ds.is_valid():
-        form_ds.save()
-        form_ds = DateSlotForm()
 
-    
+    if request.POST: 
+        form_ds = DateSlotForm(request.POST)
+        if form_ds.is_valid():
+            form_ds.save()
+            messages.success(request, 'Slot Added Successfully')
+            return managerDashboard(request)
+
+    form_ds = DateSlotForm()
     context = { 'form' : form_ds }
     return render(request , 'manager/addSlot.html' , context)
 
-
-
 def addRooms(request , slot_id = None):
-    slot_list = DateAndSlot.objects.all()
+    slot_list = DateAndSlot.objects.all().order_by('booking_date')
     context = { 
         'slot_list' : slot_list
     }
@@ -43,8 +43,7 @@ def addRooms_2(request , slot_id = None):
         for room_no in range(1 ,n.rooms_available+1):
             r = Room(chosen_date_slot = selected_slot_obj , room_number = room_no )
             r.save()
-        messages.info(request, 'Rooms Saved Successfully')
-        get_room_count_form = AddRoomForm()
+        return managerDashboard(request)
 
 
     context = {

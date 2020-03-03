@@ -13,6 +13,16 @@
 {% else %}
     <p>No Slots are available.</p>
 {% endif %}
+<b>_________________________________________</b>
+{% if full_slots %}
+    <ul>
+    {% for slots in full_slots %}
+        <li>{{ slots }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No Slots are Full.</p>
+{% endif %}
 
 
 <i><a href='{% url 'userRoomBooking' %}'>Your Bookings</a></i>
