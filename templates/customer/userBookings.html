@@ -1,27 +1,37 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Customer Bookings</h1>
+<div class="wrap">
 
 
-{% if user_booking_list %}
-    <ul>
-    {% for bookings in user_booking_list %}
-    <ol>
-        <li>{{ bookings.id }}</li>
-        <li>{{ bookings.booking_date_slot }}</li>
-        <li>{{ bookings.customer_name }}</li>
-        <li>{{ bookings.customer_email }}</li>
-        <li>{{ bookings.customer_contact }}</li>
-        <li>{{ bookings.booking_purpose }}</li>
-        <li>Room No.:{{ bookings.booked_room_number }}</li>
-        <b>-------------------------------------------------</b>
-    </ol>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No bookings are available.</p>
-{% endif %}
+    <h1>Customer Bookings</h1>
+
+    {% if user_booking_list %}
+      <ul>
+        {% for bookings in user_booking_list %}
+
+            <div class="card" style="width: 18rem;">
+            <div class="card-header">{{ bookings.id }} </div>
+
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"> {{ bookings.booking_date_slot }}  </li>
+                <li class="list-group-item"> {{ bookings.customer_name }} </li>
+                <li class="list-group-item"> {{ bookings.customer_email }} </li>
+                <li class="list-group-item"> {{ bookings.customer_contact }} </li>
+                <li class="list-group-item"> {{ bookings.booking_purpose }} </li>
+                <li class="list-group-item"> {{ bookings.booked_room_number }} </li>
+            </ul>
+            <b>_________________________________</b>
+        {% endfor %}
+      </ul>
+    </div>
+    {% else %}
+        <p>No bookings are available.</p>
+    {% endif %}
+
+
+    
+</div>
 
 
 {% endblock %}

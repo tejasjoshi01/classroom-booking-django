@@ -4,21 +4,28 @@
 
 {% block content %}
 
+<div class="wrap">
 
+    <h2>Login</h2>
+    <form method="post">
+      <div class="form-group">
+        {% csrf_token %}
+        {{ form.as_p }}
+      </div>
+      
+      <br><br>
 
+      <input class="button-custom" type="submit" value="Login"> 
 
-<div class = "container">
+    </form>
 
-<h2>Login</h2>
-  <form method="post">
-  
-     {% csrf_token %}
-    {{ form }}
-
-    <button  type="submit">Login</button>
-  </form>
-
-  <a href="{% url 'signup' %}"> <button>SignUp</button> </a>
+    <br>
+    
+    <a href="{% url 'signup' %}">
+      <input class="button-custom" type="submit" value="Sign up"> 
+    </a>
 
 </div>
+
+
 {% endblock %}

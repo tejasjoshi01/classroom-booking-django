@@ -1,31 +1,39 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Customer Dashboard</h1>
+<div class="wrap">
 
 
-{% if date_slot_list %}
-    <ul>
-    {% for slots in date_slot_list %}
-        <li><a href="{{ slots.id }}/">{{ slots }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No Slots are available.</p>
-{% endif %}
-<b>_________________________________________</b>
-{% if full_slots %}
-    <ul>
-    {% for slots in full_slots %}
-        <li>{{ slots }}</li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No Slots are Full.</p>
-{% endif %}
+
+    <h1>Customer Dashboard</h1>
 
 
-<i><a href='{% url 'userRoomBooking' %}'>Your Bookings</a></i>
+    {% if date_slot_list %}
+        <ul>
+        {% for slots in date_slot_list %}
+            <li><a href="{{ slots.id }}/">{{ slots }}</a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No Slots are available.</p>
+    {% endif %}
 
+
+    <b>_________________________________________</b>
+
+
+    {% if full_slots %}
+        <ul>
+        {% for slots in full_slots %}
+            <li>{{ slots }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No Slots are Full.</p>
+    {% endif %}
+    <i><a href='{% url 'userRoomBooking' %}'>Your Bookings</a></i>
+
+
+</div>
 {% endblock %}
 

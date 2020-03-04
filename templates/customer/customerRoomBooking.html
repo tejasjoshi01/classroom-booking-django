@@ -3,18 +3,21 @@
 
 {% block content %}
 
+<div class="wrap">
 
-<div class = "container">
-<h1>Customer Room Booking Form</h1>
+
+
+    <h1>Customer Room Booking Form</h1>
 
     <h5> For Room Number :{{ room_number }} </h5>
     <form method="POST" class="post-form">  
         {% csrf_token %}  
         {{ form.as_p }}  
-        <button type="submit" class="btn btn-success">Save</button>  
+        <input class="button-custom" type="submit" value="Save"> 
     </form>  
 
 </div>
+
 
 {% endblock %}
 

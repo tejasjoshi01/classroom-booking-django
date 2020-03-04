@@ -1,16 +1,18 @@
 from django.shortcuts import render , redirect
 from django.http import HttpResponse
 from django.contrib import messages
+from django.contrib.admin.views.decorators import staff_member_required
 
 
 from .models import AvailableRooms , DateAndSlot , Room
 from .forms import AddRoomForm , DateSlotForm 
 
 
-
+@staff_member_required(login_url = '/login/')
 def managerDashboard(request):
     return render(request , 'manager/managerDashboard.html')
 
+@staff_member_required(login_url = '/login/')
 def addSlot(request):
 
     if request.POST: 
@@ -24,28 +26,46 @@ def addSlot(request):
     context = { 'form' : form_ds }
     return render(request , 'manager/addSlot.html' , context)
 
+# slot dispaly page
+@staff_member_required(login_url = '/login/')
 def addRooms(request , slot_id = None):
-    slot_list = DateAndSlot.objects.all().order_by('booking_date')
+    slot_list_booked = DateAndSlot.objects.filter(rooms_added = True).order_by('booking_date')
+    slot_list_unbooked = DateAndSlot.objects.filter(rooms_added = False).order_by('booking_date')
+
+
     context = { 
-        'slot_list' : slot_list
+        'slot_list_booked': slot_list_booked ,
+        'slot_list_unbooked' : slot_list_unbooked
     }
     return render(request , 'manager/addRoom.html' , context)
 
 
+
+@staff_member_required(login_url = '/login/')
 def addRooms_2(request , slot_id = None):
     selected_slot_obj = DateAndSlot.objects.get(pk = slot_id)
-    n = AvailableRooms(booking_date_slot = selected_slot_obj )
-    get_room_count_form = AddRoomForm(request.POST , instance = n)
+    
+    if request.POST: 
+        n = AvailableRooms(booking_date_slot = selected_slot_obj )
+        get_room_count_form = AddRoomForm(request.POST , instance = n)
 
-    if get_room_count_form.is_valid():
-        get_room_count_form.save()
-        n.save()
-        for room_no in range(1 ,n.rooms_available+1):
-            r = Room(chosen_date_slot = selected_slot_obj , room_number = room_no )
-            r.save()
-        return managerDashboard(request)
+        if get_room_count_form.is_valid():
+            get_room_count_form.save()
+            n.save()
 
 
+            for room_no in range(1 ,n.rooms_available+1):
+                r = Room(chosen_date_slot = selected_slot_obj , room_number = room_no )
+                r.save()
+
+                
+            ds = DateAndSlot.objects.get(pk = slot_id)
+            ds.rooms_added = True
+            ds.save()
+            return managerDashboard(request)
+
+
+    get_room_count_form = AddRoomForm()
     context = {
             'form': get_room_count_form ,
         }

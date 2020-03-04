@@ -2,29 +2,35 @@
 
 {% block content %}
 
-
-<h1>Add Rooms</h1>
-
-
-{% if slot_list %}
-<ul>
-    {% for slot in slot_list %}
-      <li><a href = 'addroom/{{ slot.id }}' </a> {{ slot }}</li> 
-    {% endfor %}
-<ul>
-{% else %}
-    <h4> No Slots available </h4>
-{% endif %}
+<div class="wrap">
 
 
+  <h1>Add Rooms</h1>
 
 
+  {% if slot_list_unbooked %}
+  <ul>
+      {% for slot in slot_list_unbooked %}
+          <a href ='addroom/{{ slot.id }}'> <p> {{ slot }}</p> </a>
+      {% endfor %}
+  <ul>
+  {% else %}
+      <h5> No Slots available </h5>
+  {% endif %}
 
 
+  {% if slot_list_booked %}
+    <b>---------------------------------------------------</b>
+  <ul>
+      {% for slot in slot_list_booked %}
+        {{ slot }} <br>
+      {% endfor %}
+  <ul>
+  {% else %}
 
+  {% endif %}
 
-
-
+</div>
 
 {% endblock %}
 

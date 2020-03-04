@@ -1,19 +1,25 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Available Rooms for Selected Time Slot</h1>
+<div class="wrap">
 
 
-{% if room_list_for_slot %}
-    <ul>
-    {% for room in room_list_for_slot %}
-        <li><a href = {{ room.id }}> {{ room.room_number }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No Rooms are available for selected time slot.</p>
-{% endif %}
 
+    <h1>Available Rooms for Selected Time Slot</h1>
+    {% if room_list_for_slot %}
+        <ul>
+        {% for room in room_list_for_slot %}
+        <a href = {{ room.id }}><span class="badge badge-danger">{{ room.room_number }}</span></a>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No Rooms are available for selected time slot.</p>
+    {% endif %}
+
+
+
+
+</div>
 
 {% endblock %}
 

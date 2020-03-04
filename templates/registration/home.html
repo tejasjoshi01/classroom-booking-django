@@ -4,17 +4,35 @@
 
 {% block content %}
 
-{% if user.is_authenticated %}
-  Hi {{ user.username }}!
-  <p><a href="{% url 'logout' %}">logout</a></p>
+<div class="wrap">
 
-  <p><a href="{% url 'managerDashboard' %}">Manager Login</a></p>
-  <p><a href="{% url 'customerDashboard' %}"> Book Room </a></p>
+    {% if user.is_authenticated %}
+      Hi {{ user.username }}!
+      <p><a href="{% url 'logout' %}">logout</a></p>
+
+      
+
+        <a href="{% url 'customerDashboard' %}">
+          <input class="button-custom" type="submit" value="Book Room"> 
+        </a>
+        
+        <br><br>
 
 
-{% else %}
-  <p>You are not logged in</p>
-  <a href="{% url 'login' %}">login</a>
-{% endif %}
+        <a href="{% url 'managerDashboard' %}"> 
+          <input class="button-custom" type="submit" value="Manager Login"> 
+        </a>
+
+
+
+
+
+
+    {% else %}
+      <p>You are not logged in</p>
+      <a href="{% url 'login' %}">login</a>
+    {% endif %}
+
+</div>
 
 {% endblock %}

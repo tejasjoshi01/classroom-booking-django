@@ -3,12 +3,20 @@
 {% block title %}Sign Up{% endblock %}
 
 {% block content %}
+
+<div class="wrap">
+
+
+
   <h2>Sign up</h2>
   <form method="post">
 
     {% csrf_token %}
     {{ form }}
   
-    <button type="submit">Sign up</button>
+    <input class="button-custom" type="submit" value="Sign up"> 
   </form>
+
+</div>
+
 {% endblock %}

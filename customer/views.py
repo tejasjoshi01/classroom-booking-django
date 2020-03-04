@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib import messages
 from django.http import HttpResponse , Http404
 from django.urls import reverse_lazy
+from django.contrib.auth.decorators import login_required
 
 
 from .forms import RoomBookingForm
@@ -9,7 +10,7 @@ from manager.models import DateAndSlot , Room , AvailableRooms
 from .models import RoomBooking 
 
 
-  
+@login_required(login_url='/login/')
 def customerDashboard(request): 
     room_list = Room.objects.filter(is_booked = False)
     
@@ -30,6 +31,8 @@ def customerDashboard(request):
         }
     return render(request,"customer/customerDashboard.html",content) 
 
+
+@login_required(login_url='/login/')
 def getUserBookings(request):
     user_booking_list = RoomBooking.objects.filter(bookee_username = request.user)
     content = {
@@ -39,6 +42,7 @@ def getUserBookings(request):
     return render(request , 'customer/userBookings.html' , content)
 
 
+@login_required(login_url='/login/')
 def displayRooms(request, slot_id):
     selected_slot_obj = DateAndSlot.objects.get(pk = slot_id)
     room_list_for_slot = Room.objects.filter(chosen_date_slot = selected_slot_obj , is_booked = False)
@@ -48,6 +52,9 @@ def displayRooms(request, slot_id):
     }
     return render(request , "customer/displayRooms.html" , content)
 
+
+
+@login_required(login_url='/login/')
 def customerRoomBooking(request, slot_id , room_id):
     # Handle POST request
     if request.POST :
