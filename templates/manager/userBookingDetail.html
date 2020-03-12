@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<div class = "wrap">
+
+
+    {% if user_booking %}
+
+            <p> Name : {{ user_booking.customer_name }}   </p>
+            <p> E-mail : {{ user_booking.customer_email }}   </p>
+            <p> Contact : {{ user_booking.customer_contact }}  </p>
+            <p> Booking Purpose : {{ user_booking.booking_purpose }} </p>
+            <p> Room Number : {{ user_booking.booked_room_number.room_number }} </p>
+            <p> Date : {{ user_booking.booking_date_slot.booking_date }}   </p>
+            <p> Slot : {{ user_booking.booking_date_slot.booking_slot }}   </p>
+
+
+
+    {% else %}
+        <p>No booking exist for selected Id.</p>
+    {% endif %}
+
+
+</div>
+
+{% endblock %}
+
+
+
+
+

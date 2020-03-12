@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="wrap">
+
+  <h3> Booking Dates </h3>
+  {% if booking_dates %}
+  <ul>
+      {% for date in booking_dates %}
+        <li><a href ='getAllBookedDates/{{ date.id }}'>{{ date }} </a></li>
+      {% endfor %}
+  <ul>
+  {% else %}
+        <p> Nooooooo </p>
+  {% endif %}
+
+</div>
+
+
+
+{% endblock %}
+

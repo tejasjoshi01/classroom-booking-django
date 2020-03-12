@@ -1,0 +1,15 @@
+2 . Take proper input type  . 
+3 . Date and Slot selection UI enhancement.
+4 . Welcome page Creative . 
+
+
+
+    $ Extreme to be done $ 
+
+5 . Add Some JWT login or API endpoints to site
+6 . Give manager access to add manager 
+7 . Print the Booking 
+8 . Add Email to send to user . 
+9 . Search available slots according to date 
+10 . Deatiled View UI enhancement.
+11 . Option to delete Room Booking before 24 hrs.

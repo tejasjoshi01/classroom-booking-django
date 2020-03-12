@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="wrap">
+
+  <h3> Bookings fot Slot </h3>
+
+  {% if bookings_per_date %}
+  <ul>
+      {% for booking in bookings_per_date %}
+        <li><a href ='userBookingDetails/{{ booking.id }}'> Room No.:  {{ booking.booked_room_number.room_number }} </a></li>
+      {% endfor %}
+  <ul>
+  {% else %}
+        <p> Nooooooo </p>
+  {% endif %}
+
+</div>
+
+
+
+{% endblock %}
+

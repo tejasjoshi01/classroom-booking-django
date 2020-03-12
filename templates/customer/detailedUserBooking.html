@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<div class = "wrap">
+
+
+    {% if booking %}
+
+            <p> Name : {{ booking.customer_name }}   </p>
+            <p> E-mail : {{ booking.customer_email }}   </p>
+            <p> Contact : {{ booking.customer_contact }}  </p>
+            <p> Booking Purpose : {{ booking.booking_purpose }} </p>
+            <p> Room Number : {{ booking.booked_room_number.room_number }} </p>
+            <p> Date : {{ booking.booking_date_slot.booking_date }}   </p>
+            <p> Slot : {{ booking.booking_date_slot.booking_slot }}   </p>
+
+
+            <form method = 'POST' >
+                {% csrf_token %}
+                <p> <input type = 'submit' value = "yes"/> <a href='../'> Cancel </a></p>
+            </form>
+
+    {% else %}
+        <p>No booking exist for selected Id.</p>
+    {% endif %}
+
+
+</div>
+
+{% endblock %}
+
+
+
+
+

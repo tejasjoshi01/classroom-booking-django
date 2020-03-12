@@ -7,47 +7,23 @@ from .models import AvailableRooms , DateAndSlot
 
 
 
-#Form for taking inputs of DateSlotModel
 
+
+
+#Form for taking inputs of DateSlotModel
 class DateInput(forms.DateInput):
     input_type = 'date'
 
+
+#Forms for adding a particular slots
 class DateSlotForm(forms.ModelForm):
     class Meta:
         model = DateAndSlot
         fields = ('booking_date', 'booking_slot')
         widgets = {
             'booking_date': DateInput()
+
         }
- 
-
-
-
-
-
-class Projectform(forms.ModelForm):
-    def __init__(user_project, request, *args, **kwargs):
-        self.user_project = user_project
-        self.request = request
-        super().__init__(*args, **kwargs)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 #Form for taking inputs of AvailableRooms
@@ -55,5 +31,11 @@ class AddRoomForm(ModelForm):
     class Meta:
         model  = AvailableRooms 
         fields = ['rooms_available']
+
+#Form taking inputs in form of Date
+class DateRangeForm(forms.Form):
+    start_date = forms.DateField(label = 'From Date', required = True , widget = DateInput() )
+    end_date   = forms.DateField(label = 'End Date', required = True , widget = DateInput() )
+
 
 

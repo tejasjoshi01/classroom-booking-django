@@ -1,20 +1,28 @@
+#Django utils import
 from django.db import models
 from django.contrib import messages
 from django.core.exceptions import ValidationError
 from django.core.management.base import BaseCommand, CommandError
+
+#import datetime libraray
 from datetime import datetime, timedelta
 import datetime
+
+#self written models 
+
+
+
 
 SLOT_CHOICES = (
     ('Slot 1' , 'S1') , 
     ('Slot 2' , 'S2') ,
 )
-
-
 class DateAndSlot(models.Model):
     booking_date = models.DateField(blank = False )
     booking_slot = models.TextField(choices = SLOT_CHOICES, blank = False)
     rooms_added = models.BooleanField(default = False)
+    
+    # DateAndSlot model methods for validation
     class Meta :
         unique_together = ('booking_date', 'booking_slot')
 
@@ -32,6 +40,8 @@ class DateAndSlot(models.Model):
 
 
 
+
+# Model for declaring rooms for particular time slot
 class AvailableRooms(models.Model):
     booking_date_slot = models.OneToOneField(DateAndSlot , on_delete=models.CASCADE , blank=False , unique = True)
     rooms_available = models.IntegerField(null = True) 
@@ -40,6 +50,9 @@ class AvailableRooms(models.Model):
         return ("Booking Date : {0} \n Booking Slot: {1} \n Available Rooms: {2} " .format(self.booking_date_slot.booking_date , self.booking_date_slot.booking_slot , self.rooms_available ))
 
 
+
+
+#Model for generating rooms object for particular slot.
 class Room(models.Model):
     chosen_date_slot = models.ForeignKey('DateAndSlot' , on_delete = models.CASCADE ) 
     room_number      = models.IntegerField()

@@ -4,6 +4,14 @@
 
 <div class="wrap">
 
+  <script>
+    $(function(){
+        $('.datepicker').datepicker({
+            endDate: '+0d',
+            autoclose: true
+        });
+    });
+  </script>
 
   <h1>Add Rooms</h1>
 
@@ -17,6 +25,13 @@
   {% else %}
       <h5> No Slots available </h5>
   {% endif %}
+
+      <h3><b><i> OR </i></b></h3>
+
+    <a href="{% url 'dateInRange' %}"> Add In Range </a> 
+
+    <br>
+
 
 
   {% if slot_list_booked %}

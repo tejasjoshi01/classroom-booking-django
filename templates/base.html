@@ -13,7 +13,7 @@
             font-style: normal;
             font-weight: 200;
             margin: 0px;
-            background: linear-gradient(#c8daea, #dae7f1);
+            background: linear-gradient(#dae7f1, #4267B2);
         }
 
 
@@ -22,6 +22,8 @@
         }
 
         .wrap {
+            min-width: 500px;
+            min-height: 500px;
             margin: 0;
             position: absolute;
             top: 50%;
@@ -49,7 +51,7 @@
             border: none;
             color: black;
             background-color: white;
-            box-shadow: steelblue 0 0px 0px 2px inset;
+            box-shadow: #00539B 0 0px 0px 2px inset;   
             font-family: 'Inconsolata', sans-serif;
             font-style: normal;
             font-size: 1.3em;
@@ -57,7 +59,7 @@
 
         .button-custom:hover {
             color: white;
-            box-shadow: steelblue 0 80px 0px 2px inset;
+            box-shadow: #00539B 0 80px 0px 2px inset;
             border: none;
         }
 
@@ -150,7 +152,7 @@
                 background-color: lightsteelblue;
                 height: 0px;
                 transition: all 0.15s ease-in;
-                overflow-y: hidden;
+                overflow-y: auto;
                 top: 50px;
                 left: 0px;
             }
@@ -184,7 +186,7 @@
         }
 
         input:focus {
-            border-bottom: 4px solid steelblue;
+            border-bottom: 4px solid #194F90;
             background-color: rgba(0,0,0,0);
         }
 
@@ -524,7 +526,64 @@
     </style>
 </head>
 
-<body>
+<body> 
+
+
+<div class="nav" style="background-color: #4267B2;">
+
+  <div class="nav-header">
+    <div class="nav-title">
+      <a href="{% url 'home' %}"><b>Room Booking System</b></a>
+    </div>
+  </div>
+
+
+{% if user.is_authenticated %}
+
+  <div class="dropdown">
+    <button class="dropbtn">Hi {{ user.username }}!</button>
+    <div class="dropdown-content" style="right: 20px;">
+      <a href="{% url 'logout' %}">logout</a>
+    </div>
+  </div>
+
+  <div class="dropdown">
+    <a href="{% url 'customerDashboard' %}">
+        <button class="dropbtn" >  Customer Dashboard </button>
+    </a>
+  </div>
+
+    {% if user.is_staff %}
+        <div class="dropdown">
+            <a href="{% url 'managerDashboard' %}"> 
+            <button class="dropbtn">Manager Dashboard </button>
+            </a>
+        </div>
+    {% else %}
+
+    {% endif %}
+
+{% else %}
+
+  <div class="dropdown">
+    <a href="{% url 'signup' %}">
+        <button class="dropbtn" >  SignUp </button>
+    </a>
+  </div>
+
+  <div class="dropdown">
+    <a href="{% url 'login' %}">
+        <button class="dropbtn" >  Login </button>
+    </a>
+  </div>
+
+
+{% endif %}
+ 
+</div>
+
+
+
 
 
 
@@ -532,5 +591,7 @@
 {% endblock content %}
 
 
+
 </body>
 </html>
+

@@ -1,38 +1,25 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="wrap">
 
 
-    <h1>Customer Bookings</h1>
+<div class = "wrap">
 
-    {% if user_booking_list %}
-      <ul>
-        {% for bookings in user_booking_list %}
+{% if user_booking_list %}
 
-            <div class="card" style="width: 18rem;">
-            <div class="card-header">{{ bookings.id }} </div>
-
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item"> {{ bookings.booking_date_slot }}  </li>
-                <li class="list-group-item"> {{ bookings.customer_name }} </li>
-                <li class="list-group-item"> {{ bookings.customer_email }} </li>
-                <li class="list-group-item"> {{ bookings.customer_contact }} </li>
-                <li class="list-group-item"> {{ bookings.booking_purpose }} </li>
-                <li class="list-group-item"> {{ bookings.booked_room_number }} </li>
-            </ul>
-            <b>_________________________________</b>
-        {% endfor %}
-      </ul>
-    </div>
-    {% else %}
-        <p>No bookings are available.</p>
-    {% endif %}
+   <ul>
+      {% for booking in user_booking_list %}
+        <li><a href ='{{ booking.id }}'> {{ booking }} </a></li>
+      {% endfor %}
+   </ul>
 
 
-    
+{% else %}
+    <p> No bookings are available. </p>
+{% endif %}
+
+
 </div>
-
 
 {% endblock %}
 

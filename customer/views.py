@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render , redirect , get_object_or_404
 from django.contrib import messages
-from django.http import HttpResponse , Http404
-from django.urls import reverse_lazy
+from django.http import HttpResponse , Http404 
+from django.urls import reverse_lazy 
 from django.contrib.auth.decorators import login_required
 
 
@@ -30,16 +30,6 @@ def customerDashboard(request):
             'date_slot_list' : date_slot_list
         }
     return render(request,"customer/customerDashboard.html",content) 
-
-
-@login_required(login_url='/login/')
-def getUserBookings(request):
-    user_booking_list = RoomBooking.objects.filter(bookee_username = request.user)
-    content = {
-            'user_booking_list' : user_booking_list
-        }
-
-    return render(request , 'customer/userBookings.html' , content)
 
 
 @login_required(login_url='/login/')
@@ -80,3 +70,44 @@ def customerRoomBooking(request, slot_id , room_id):
         'form':form
     }
     return render(request,"customer/customerRoomBooking.html" , context)
+
+
+
+
+
+@login_required(login_url='/login/')
+def getUserBookings(request):
+    user_booking_list = RoomBooking.objects.filter(bookee_username = request.user)
+
+
+    content = {
+            'user_booking_list' : user_booking_list
+        }
+    return render(request , 'customer/userBookings.html' , content)
+
+
+def deatiledUserBooking(request , booking_id):
+    user_booking_detail = get_object_or_404( RoomBooking , pk = booking_id)
+    
+    if request.method == 'POST':
+        user_booking_detail.booked_room_number.is_booked = False 
+        user_booking_detail.booked_room_number.save()
+        user_booking_detail.delete()
+        return HttpResponse("deleted object")
+
+
+    content = {
+        'booking' : user_booking_detail ,
+    }
+    return render(request , 'customer/detailedUserBooking.html' , content)
+
+
+
+
+
+# def deleteUserBooking(request , booking_id ):
+        # obj = get_object_or_404( RoomBooking , pk = booking_id)
+
+
+            
+        # return HttpResponse('Deleted Booking')

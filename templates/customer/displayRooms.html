@@ -2,14 +2,24 @@
 
 {% block content %}
 <div class="wrap">
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 
 
 
     <h1>Available Rooms for Selected Time Slot</h1>
+
     {% if room_list_for_slot %}
         <ul>
         {% for room in room_list_for_slot %}
-        <a href = {{ room.id }}><span class="badge badge-danger">{{ room.room_number }}</span></a>
+            
+            <a href = {{ room.id }} style='font-size:20px ; color: #204269' >
+
+            
+                <div id="seat" class="5406" data-toggle="tooltip" data-placement="right" title="5406">
+                    {{ room.room_number }}
+                </div>
+            </a>
+
         {% endfor %}
         </ul>
     {% else %}
