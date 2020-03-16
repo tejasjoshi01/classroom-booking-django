@@ -3,6 +3,8 @@
 <head>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ 
     <style type="text/css">
 
         @import url(https://fonts.googleapis.com/css?family=Inconsolata:700);
@@ -13,15 +15,17 @@
             font-style: normal;
             font-weight: 200;
             margin: 0px;
-            background: linear-gradient(#dae7f1, #4267B2);
+            background: linear-gradient(#333556, #333556);
         }
 
 
         a {
+            color : #D84355 ;
             text-decoration: none;
         }
 
         .wrap {
+            y-overflow : inherit ;
             min-width: 500px;
             min-height: 500px;
             margin: 0;
@@ -35,7 +39,34 @@
             text-align: center;
             border: 2px white solid;
             border-radius: 3px;
+            font-family:    Arial, Helvetica, sans-serif
         }
+        .button-delete {
+            -webkit-transition: all 300ms cubic-bezier(0.1590, 0.500, 0.150, 1.360);
+            -moz-transition: all 300ms cubic-bezier(0.1590, 0.500, 0.150, 1.360);
+            -ms-transition: all 300ms cubic-bezier(0.1590, 0.500, 0.150, 1.360);
+            -o-transition: all 300ms cubic-bezier(0.1590, 0.500, 0.150, 1.360);
+            transition: all 300ms cubic-bezier(0.1590, 0.500, 0.150, 1.360);
+            display: block;
+            margin: 10px auto;
+            max-width: 70px;
+            border-radius: 4px;
+            padding: 8px 15px;
+            border: none;
+            color: black;
+            background-color: white;
+            box-shadow: #a32c3c 0 0px 0px 2px inset;   
+            font-family: 'Inconsolata', sans-serif;
+            font-style: normal;
+            font-size: 0.9em;
+        }
+
+        .button-delete:hover {
+            color: white;
+            box-shadow: #a32c3c 0 80px 0px 2px inset;
+            border: none;
+        }
+
 
         .button-custom {
             -webkit-transition: all 300ms cubic-bezier(0.1590, 0.500, 0.150, 1.360);
@@ -70,7 +101,7 @@
         .nav {
             height: 50px;
             width: 100%;
-            background-color: steelblue;
+            background-color: #1e2433;
             position: relative;
             z-index: 1;
         }
@@ -104,7 +135,7 @@
         }
 
         .nav > .nav-links > a:hover {
-            background-color: lightsteelblue;
+            background-color: #5d5a91;
         }
 
         .nav > #nav-check {
@@ -134,10 +165,10 @@
                 width: 50px;
                 height: 50px;
                 padding: 13px;
-                background-color: lightsteelblue;
+                background-color: #5d5a91;
             }
             .nav > .nav-btn > label:hover {
-                background-color: lightsteelblue;
+                background-color: #5d5a91;
             }
             .nav > .nav-btn > label > span {
                 display: block;
@@ -149,10 +180,10 @@
                 position: absolute;
                 display: block;
                 width: 100%;
-                background-color: lightsteelblue;
+                background-color: #5d5a91;
                 height: 0px;
                 transition: all 0.15s ease-in;
-                overflow-y: auto;
+                overflow-y: scroll;
                 top: 50px;
                 left: 0px;
             }
@@ -165,7 +196,7 @@
             }
             .nav > #nav-check:checked + .nav-links {
                 height: calc(100vh - 50px);
-                overflow-y: auto;
+                overflow-y: scroll;
             }
         }
 
@@ -186,7 +217,7 @@
         }
 
         input:focus {
-            border-bottom: 4px solid #194F90;
+            border-bottom: 4px solid #5d5a91;
             background-color: rgba(0,0,0,0);
         }
 
@@ -318,6 +349,7 @@
             margin-right:20px;
         }
 
+
         .menu{
             height:410px;
             width:100%;
@@ -336,7 +368,7 @@
         /* Dropdown container - needed to position the dropdown content */
         .dropdown {
             float: right;
-            overflow: hidden;
+            overflow: scroll;
             padding-right:20px;
         }
 
@@ -365,7 +397,7 @@
         /* Style the links inside the dropdown */
         .dropdown-content a {
             float: justify;
-            color: steelblue;
+            color: #5d5a91;
             padding: 12px 16px;
             text-decoration: none;
             display: block;
@@ -374,14 +406,14 @@
 
         /* Add a dark background on topnav links and the dropdown button on hover */
         .topnav a:hover, .dropdown:hover .dropbtn {
-            background-color: steelblue;
+            background-color: #5d5a91;
             color: white;
         }
 
         /* Add a grey background to dropdown links on hover */
         .dropdown-content a:hover {
             background-color: #deeff4;
-            color: #638acc;
+            color: #5d5a91;
         }
 
         /* Show the dropdown menu when the user moves the mouse over the dropdown button */
@@ -484,8 +516,8 @@
             margin: 70px auto;
             padding: 20px;
             background: #fff;
-            border-radius: 5px;
-            width: 30%;
+            border-radius: 15px;
+            width: 60%;
             position: relative;
             transition: all 5s ease-in-out;
         }
@@ -506,11 +538,11 @@
             color: #333;
         }
         .popup .close:hover {
-            color: steelblue;
+            color: red;
         }
         .popup .content {
             max-height: 30%;
-            overflow: auto;
+            overflow: scroll;
             text-decoration: none;
         }
 
@@ -523,13 +555,36 @@
             }
         }
 
+
+
+        .element {
+            position: relative;
+        }
+        
+        
+        .element:before {
+            content: "\f000";
+            font-family: FontAwesome;
+            font-style: normal;
+            font-weight: normal;
+            text-decoration: inherit;
+            color: #000;
+            font-size: 18px;
+            padding-right: 0.5em;
+            position: absolute;
+            top: 10px;
+            left: 0;
+        }
+
+
+
     </style>
 </head>
 
 <body> 
 
 
-<div class="nav" style="background-color: #4267B2;">
+<div class="nav" style="background-color: #1e2433;">
 
   <div class="nav-header">
     <div class="nav-title">
@@ -589,6 +644,9 @@
 
 {% block content %}
 {% endblock content %}
+
+
+
 
 
 

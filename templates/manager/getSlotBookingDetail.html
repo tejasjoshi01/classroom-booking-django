@@ -4,7 +4,15 @@
 
 <div class="wrap">
 
-  <h3> Bookings fot Slot </h3>
+  {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <li class="{{ message.tags }}">{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  <h3 style="color: #13294B; ;"> Bookings fot Slot </h3>
 
   {% if bookings_per_date %}
   <ul>
@@ -13,7 +21,7 @@
       {% endfor %}
   <ul>
   {% else %}
-        <p> Nooooooo </p>
+        <p> No Bookings available for selected slot . </p>
   {% endif %}
 
 </div>

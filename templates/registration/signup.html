@@ -4,6 +4,19 @@
 
 {% block content %}
 
+<style>
+.helptext{
+  display : none ;
+}
+
+
+</style>
+
+
+
+
+
+
 <div class="wrap">
 
 
@@ -12,7 +25,7 @@
   <form method="post">
     
     {% csrf_token %}
-    {{ form }}
+    {{ form.as_p }}
   
     <input class="button-custom" type="submit" value="Sign up"> 
   </form>

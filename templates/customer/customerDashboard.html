@@ -5,33 +5,71 @@
 
 
 
-    <h1>Customer Dashboard</h1>
+    <h1> <i class="fa fa-user"></i> Customer Dashboard</h1>
 
 
     {% if date_slot_list %}
-        <ul>
+        <h4> Available Slots for Booking: </h4>
+
+        <div class="table">
         {% for slots in date_slot_list %}
-            <li><a href="{{ slots.id }}/">{{ slots }}</a></li>
+            <div class="row">
+              <a href="{{ slots.id }}/">
+                <div class="cell">
+                    {{ slots.booking_date }}                
+                </div>
+                <div class="cell">
+                    {{ slots.booking_slot }}
+                </div>
+              </a>  
+            </div>
         {% endfor %}
-        </ul>
+        </div>
+
+
     {% else %}
-        <p>No Slots are available.</p>
+        <p>No Slots are available.</p> 
     {% endif %}
 
 
-    <b>_________________________________________</b>
 
 
     {% if full_slots %}
-        <ul>
-        {% for slots in full_slots %}
-            <li>{{ slots }}</li>
-        {% endfor %}
-        </ul>
+        <h4> Full Slots :</h4>
+            <div class='table'>
+            {% for slots in full_slots %}
+                <div class="row">
+                <a href="{{ slots.id }}/">
+                    <div class="cell">
+                        {{ slots.booking_date }}                
+                    </div>
+                    <div class="cell">
+                        {{ slots.booking_slot }}
+                    </div>
+                </a>  
+                </div>
+            {% endfor %}
+            </div>
+
     {% else %}
-        <p>No Slots are Full.</p>
+
     {% endif %}
-    <i><a href='{% url 'userRoomBooking' %}'>Your Bookings</a></i>
+    
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="booking">
+        
+        <a href='{% url 'userRoomBooking' %}'> <i class="fa fa-list"></i> &nbsp; 
+            Your Bookings
+        </a>
+    </div>
+
+
+
+
+
 
 
 </div>

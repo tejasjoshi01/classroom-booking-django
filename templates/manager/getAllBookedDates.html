@@ -4,15 +4,24 @@
 
 <div class="wrap">
 
+  {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <li class="{{ message.tags }}">{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+
   <h3> Booking Dates </h3>
   {% if booking_dates %}
   <ul>
       {% for date in booking_dates %}
-        <li><a href ='getAllBookedDates/{{ date.id }}'>{{ date }} </a></li>
+        <li><a href ='getAllBookedDates/{{ date.id }}'>{{ date.booking_date }}: {{ date.booking_slot }} </a></li><br>
       {% endfor %}
   <ul>
   {% else %}
-        <p> Nooooooo </p>
+        <p> Invalid </p>
   {% endif %}
 
 </div>

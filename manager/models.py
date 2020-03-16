@@ -4,11 +4,11 @@ from django.contrib import messages
 from django.core.exceptions import ValidationError
 from django.core.management.base import BaseCommand, CommandError
 
-#import datetime libraray
+#Import datetime libraray
 from datetime import datetime, timedelta
 import datetime
 
-#self written models 
+
 
 
 
@@ -54,7 +54,7 @@ class AvailableRooms(models.Model):
 
 #Model for generating rooms object for particular slot.
 class Room(models.Model):
-    chosen_date_slot = models.ForeignKey('DateAndSlot' , on_delete = models.CASCADE ) 
+    chosen_date_slot = models.ForeignKey(DateAndSlot , on_delete = models.CASCADE ) 
     room_number      = models.IntegerField()
     is_booked        = models.BooleanField(default = False)
 

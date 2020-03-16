@@ -5,15 +5,57 @@
 <div class="wrap">
 
 
-    <h1>Hello Manager</h1>
 
-    <ul>
-        <li><a href="{% url 'addRooms' %}">Add Rooms</a>
+
+
+
+    <h1> <i class="fa fa-id-badge" aria-hidden="true"></i> Manager Dashboard</h1>
+
         <br>
-        <li><a href="{% url 'addSlot' %}">Add Slot</a>
         <br>
-        <li><a href="{% url 'getAllBookedDates' %}">See Bookings</a>
+
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+        {% endfor %}
     </ul>
+    {% endif %}
+    
+        <div class='space'>
+            <h3> 
+                <a href="{% url 'addSlot' %}">
+                <i class="fa fa-plus"></i>
+                        Add Slot
+                </a>
+            </h3>
+        </div>
+
+        <br>
+        <br>
+
+
+        <div class='space'>
+        <h3> 
+            <a href="{% url 'addRooms' %}">
+              <i class="fa fa-bed" ></i> 
+              Add Rooms 
+            </a> 
+        </h3>
+        </div>
+
+        <br>
+        <br>
+
+        <div class='space'>
+        <h3>
+            <a href="{% url 'getAllBookedDates' %}">
+                <i class="fa fa-calendar"></i>
+                Bookings
+            </a>
+        </h3>
+        </div>
+
 
 </div>
 

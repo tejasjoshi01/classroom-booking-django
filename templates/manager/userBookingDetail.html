@@ -6,16 +6,105 @@
 
 <div class = "wrap">
 
+    <h4> Booking Details: </h4>
 
     {% if user_booking %}
 
-            <p> Name : {{ user_booking.customer_name }}   </p>
-            <p> E-mail : {{ user_booking.customer_email }}   </p>
-            <p> Contact : {{ user_booking.customer_contact }}  </p>
-            <p> Booking Purpose : {{ user_booking.booking_purpose }} </p>
-            <p> Room Number : {{ user_booking.booked_room_number.room_number }} </p>
-            <p> Date : {{ user_booking.booking_date_slot.booking_date }}   </p>
-            <p> Slot : {{ user_booking.booking_date_slot.booking_slot }}   </p>
+    <div class='table'>
+
+            <div class="row">
+                <div class="cell">
+                    Name : 
+                </div>
+                <div class="cell">
+                     {{ user_booking.customer_name }}
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="cell">
+                   E-mail :
+                </div>
+                <div class="cell">
+                     {{ user_booking.customer_email }}
+                </div>
+            </div>
+            
+            
+            <div class="row">
+                <div class="cell">
+                   User-Id :
+                </div>
+                <div class="cell">
+                     {{ user_booking.bookee_username }}
+                </div>
+            </div>
+            
+            
+            <div class="row">
+                <div class="cell">
+                   Contact :
+                </div>
+                <div class="cell">
+                     {{ user_booking.customer_contact }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="cell">
+                  Booking Purpose :
+                </div>
+                <div class="cell">
+                     {{ user_booking.booking_purpose }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="cell">
+                  Room Number :
+                </div>
+                <div class="cell">
+                     {{ user_booking.booked_room_number.room_number }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="cell">
+                   Date :
+                </div>
+                <div class="cell">
+                      {{ user_booking.booking_date_slot.booking_date }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="cell">
+                   Slot :
+                </div>
+                <div class="cell">
+                     {{ user_booking.booking_date_slot.booking_slot }}
+                </div>
+            </div>
+        </div>
+
+        <div class="box">
+            <a class="button-delete" style="font-size : 20 px;" href="#popup1">Cancel Booking</a>
+        </div>
+
+        <div id="popup1" class="overlay">
+            <div class="popup">
+                <a class="close" href="#">&times;</a>
+                <h5> Are you Sure?</h5>
+                <form method = 'POST' >
+                    {% csrf_token %}
+                    <p> <input class = 'button-delete' type = 'submit' value = "yes"/> <a href='../'></a></p>
+                </form>
+
+            </div>
+        </div>
+
+
 
 
 
@@ -27,7 +116,6 @@
 </div>
 
 {% endblock %}
-
 
 
 

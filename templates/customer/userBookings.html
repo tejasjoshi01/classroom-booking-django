@@ -5,14 +5,30 @@
 
 <div class = "wrap">
 
+
+
+
+
+<h3> Your Bookings </h3>
+<table class="neumorphic">
+
+
 {% if user_booking_list %}
 
-   <ul>
+    <ol>
       {% for booking in user_booking_list %}
-        <li><a href ='{{ booking.id }}'> {{ booking }} </a></li>
-      {% endfor %}
-   </ul>
 
+
+
+
+           <li> <a href ='{{ booking.id }}'> {{ booking }} - &nbsp &nbsp{{ booking.booking_date_slot.booking_date }} </a>  </li><br>
+
+
+
+      {% endfor %}
+       </ol> 
+
+</table>
 
 {% else %}
     <p> No bookings are available. </p>
@@ -21,5 +37,12 @@
 
 </div>
 
+          
+
+          
+
 {% endblock %}
 
+          <tr>
+            <td >  </td>
+          </tr>

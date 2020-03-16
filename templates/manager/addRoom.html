@@ -19,26 +19,22 @@
   {% if slot_list_unbooked %}
   <ul>
       {% for slot in slot_list_unbooked %}
-          <a href ='addroom/{{ slot.id }}'> <p> {{ slot }}</p> </a>
+        <li>  <a href ='addroom/{{ slot.id }}'> <p> {{ slot }}</p> </a> </li>
       {% endfor %}
   <ul>
   {% else %}
-      <h5> No Slots available </h5>
+      <h5> Add Slot First </h5>
   {% endif %}
 
-      <h3><b><i> OR </i></b></h3>
-
-    <a href="{% url 'dateInRange' %}"> Add In Range </a> 
-
-    <br>
 
 
 
-  {% if slot_list_booked %}
-    <b>---------------------------------------------------</b>
+
+{% if slot_list_booked %}
+  <h3>  Rooms Alloted For Slot  </h3>
   <ul>
       {% for slot in slot_list_booked %}
-        {{ slot }} <br>
+       <li> {{ slot }} </li> <br>
       {% endfor %}
   <ul>
   {% else %}
@@ -48,4 +44,3 @@
 </div>
 
 {% endblock %}
-
