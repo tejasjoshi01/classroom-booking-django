@@ -1,7 +1,3 @@
-E-mail : tejasjoshi026@gmail.com 
-Username : tejas01
-
-
 
 Clone This Project (Make Sure You Have Git Installed)
 ```
@@ -31,5 +27,13 @@ After all these steps , you can start testing and developing this project.
 2) Add Slot by choosing the required date .
 3) Declare the Number of rooms available for the Same Slot .
 4) That's set rooms are available for the customer to Book .
+
+
+#### Project Screen Shots
+![s2](assets/screen2.png)
+![s3](assets/screen3.png)
+![s4](assets/screen4.png)
+![s5](assets/screen5.png)
+![s6](assets/screen6.png)
 
 
